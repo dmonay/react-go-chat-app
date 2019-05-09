@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import { withStyles } from '@material-ui/core/styles'
@@ -31,6 +30,9 @@ const Sender = props => {
       })
     )
     event.preventDefault()
+
+    // clear out local state
+    saveMessageText('')
   }
 
   return (
@@ -54,8 +56,5 @@ const mapStateToProps = ({ chat }) => ({
   emailAddress: chat.emailAddress,
   socket: chat.socket
 })
-
-// const mapDispatchToProps = dispatch =>
-//   bindActionCreators({ sendSocketMessage }, dispatch)
 
 export default connect(mapStateToProps)(withStyles(styles)(Sender))

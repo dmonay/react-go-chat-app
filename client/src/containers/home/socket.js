@@ -45,9 +45,9 @@ const openSocketConnection = (userEmailAddress, actions) => {
 
   // Construct callback when socket closes.
   socket.onclose = () => {
-    console.log('Socket has closed. Redirecting to home page.')
+    console.log('Socket has closed. Redirecting to error page.')
     actions.socketIsClosed()
-    actions.goHome()
+    actions.goToError()
   }
 }
 

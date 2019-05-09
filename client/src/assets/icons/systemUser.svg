@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="301" height="301" viewBox="0 0 301 301">
+  <defs>
+    <circle id="defaulticon-1-a" cx="150" cy="150" r="150"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="rotate(-90 150.678 150.226)">
+    <mask id="defaulticon-1-b" fill="#fff">
+      <use xlink:href="#defaulticon-1-a"/>
+    </mask>
+    <use fill="#3D4DBD" xlink:href="#defaulticon-1-a"/>
+    <g fill="#FDBE20" mask="url(#defaulticon-1-b)">
+      <circle cx="150" cy="150" r="150" transform="translate(-150)"/>
+    </g>
+    <g mask="url(#defaulticon-1-b)" opacity=".75">
+      <g transform="rotate(90 300 150)">
+        <circle cx="150" cy="300" r="150" fill="#0CD88F"/>
+        <circle cx="450" cy="300" r="150" fill="#606DC9"/>
+        <circle cx="300" cy="150" r="150" fill="#42A5F6"/>
+      </g>
+    </g>
+    <path stroke="#979797" mask="url(#defaulticon-1-b)"/>
+  </g>
+</svg>

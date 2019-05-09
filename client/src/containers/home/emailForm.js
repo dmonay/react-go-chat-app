@@ -42,7 +42,7 @@ const EmailForm = props => {
       addMessage: props.addMessage,
       socketIsClosed: props.socketIsClosed,
       createSocket: props.createSocket,
-      goHome: props.goHome
+      goToError: props.goToError
     }
     openSocketConnection(userEmailAddress, actions)
 
@@ -81,7 +81,7 @@ const mapDispatchToProps = dispatch =>
       socketIsClosed,
       createSocket,
       goToChat: () => push('/chat'),
-      goHome: () => push('/')
+      goToError: () => push('/error')
     },
     dispatch
   )

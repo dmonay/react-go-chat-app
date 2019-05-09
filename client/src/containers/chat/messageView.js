@@ -5,33 +5,18 @@ import { connect } from 'react-redux'
 
 import Message from './message'
 
-const messagesThatWillLiveInState = [
-  {
-    id: 0,
-    from: 'system',
-    content: 'welcome man',
-    timestamp: 12342344343
-  },
-  {
-    id: 1,
-    from: 'user',
-    content: 'thanks man',
-    timestamp: 12342344343434
-  }
-]
-
 const MessageView = props => {
   return (
     <div>
-      {messagesThatWillLiveInState.map((_, i) => {
-        return <Message key={i} />
-      })}
+      {props.messages.map(m => (
+        <Message key={m.id} data={m} />
+      ))}
     </div>
   )
 }
 
 const mapStateToProps = ({ chat }) => ({
-  emailAddress: chat.emailAddress
+  messages: chat.messages
 })
 
 const mapDispatchToProps = dispatch =>

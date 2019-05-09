@@ -9,13 +9,11 @@ const Header = props => {
       <h1>SinaiChat™</h1>
       <p>Welcome {props.emailAddress} to the Mount Sinai Chat System!</p>
       <p>There are {props.totalMessages} messages in this chat.</p>
-      {props.socketIsClosed && <p>Lost connection with mothership!</p>}
     </div>
   )
 }
 
 const mapStateToProps = ({ chat }) => ({
-  socketIsClosed: chat.socketIsClosed,
   totalMessages: chat.totalMessages
 })
 
