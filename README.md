@@ -38,5 +38,5 @@ go mod init example.com/m
 2. react code uses hooks
 3. http2 server
 4. foundation for socket authentication
-5. We store the messages in-memory. Messages are keyed by UUID. This allows us to delete messages on-demand and
-   perform other actions on a per-message level.
+5. We store the messages in-memory. Messages are keyed by UUID. This allows us to delete messages on-demand and perform other actions on a per-message level.
+6. if socket is closed on server-side, redirec back to homepage so that FE and BE state don't get out of sync. In a realstic scenario, we would attempt up to n times to reconnect, and if we re-establish connection with server, grab state from there.

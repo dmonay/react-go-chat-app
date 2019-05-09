@@ -7,7 +7,14 @@ import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 
-import { addUserEmail } from '../../modules/chat'
+import {
+  addUserEmail,
+  incrementTotalMsgs,
+  addMessage,
+  socketIsClosed,
+  createSocket
+} from '../../modules/chat'
+
 import openSocketConnection from './socket'
 
 const styles = theme => ({
@@ -29,8 +36,17 @@ const EmailForm = props => {
 
   const handleSubmit = event => {
     props.addUserEmail(userEmailAddress)
-    props.changePage()
-    openSocketConnection(userEmailAddress)
+
+    let actions = {
+      incrementTotalMsgs: props.incrementTotalMsgs,
+      addMessage: props.addMessage,
+      socketIsClosed: props.socketIsClosed,
+      createSocket: props.createSocket,
+      goHome: props.goHome
+    }
+    openSocketConnection(userEmailAddress, actions)
+
+    props.goToChat()
     event.preventDefault()
   }
 
@@ -60,7 +76,12 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       addUserEmail,
-      changePage: () => push('/chat')
+      incrementTotalMsgs,
+      addMessage,
+      socketIsClosed,
+      createSocket,
+      goToChat: () => push('/chat'),
+      goHome: () => push('/')
     },
     dispatch
   )

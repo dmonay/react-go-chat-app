@@ -1,19 +1,20 @@
+// Hardcoded for same reason as on the server. See comment there.
 const authString = "ch2983r0vhs'.cx8^&#Bf"
 
-const openSocketConnection = userEmailAddress => {
-  console.log('initializing socket conn')
-
+const openSocketConnection = (userEmailAddress, actions) => {
   // Create the socket.
   const socket = new WebSocket('wss://localhost:8080/socket')
 
   // Construct callback when socket opens.
-  socket.onopen = () =>
+  socket.onopen = () => {
     socket.send(
       JSON.stringify({
         authorization: authString,
         user: userEmailAddress
       })
     )
+    actions.createSocket(socket)
+  }
 
   // Construct callback when socket receives message.
   socket.onmessage = event => {
@@ -34,14 +35,19 @@ const openSocketConnection = userEmailAddress => {
       console.warn('Unable to parse socket frame data', event)
       return
     }
-    console.log('payload:', payload)
+
+    // Add message to our global state.
+    actions.addMessage(payload)
+
+    // Increment total count of messages in our global state.
+    actions.incrementTotalMsgs()
   }
 
   // Construct callback when socket closes.
   socket.onclose = () => {
-    console.log('Socket has closed')
-
-    // fire off action here
+    console.log('Socket has closed. Redirecting to home page.')
+    actions.socketIsClosed()
+    actions.goHome()
   }
 }
 

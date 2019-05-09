@@ -5,11 +5,12 @@ import (
 	"fmt"
 	"log"
 
+	uuid "github.com/satori/go.uuid"
 	"nhooyr.io/websocket"
 	"nhooyr.io/websocket/wsjson"
 )
 
-func (sf *socketFrame) initiateSocket(i int, ctx context.Context, c *websocket.Conn) (err error) {
+func (sf *socketFrame) initiateSocket(i int, ctx context.Context, c *websocket.Conn, um *UserMessages) (err error) {
 	// we only perform this upon initial connection
 	if i != 0 {
 		return
@@ -27,7 +28,18 @@ func (sf *socketFrame) initiateSocket(i int, ctx context.Context, c *websocket.C
 
 	// if user is authenticated, send welcome message
 	customWelcomeMessage := fmt.Sprintf(welcomeMessage, sf.User)
-	if err = wsjson.Write(ctx, c, customWelcomeMessage); err != nil {
+
+	responseFrame := socketFrame{
+		User:        sf.User,
+		NumMessages: 1,
+		Author:      "system",
+		Value:       customWelcomeMessage,
+		ID:          uuid.NewV4(),
+	}
+
+	um.Add(responseFrame)
+
+	if err = wsjson.Write(ctx, c, responseFrame); err != nil {
 		log.Println(err)
 		return
 	}

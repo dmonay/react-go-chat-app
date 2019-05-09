@@ -8,12 +8,15 @@ const Header = props => {
     <div>
       <h1>SinaiChat™</h1>
       <p>Welcome {props.emailAddress} to the Mount Sinai Chat System!</p>
+      <p>There are {props.totalMessages} messages in this chat.</p>
+      {props.socketIsClosed && <p>Lost connection with mothership!</p>}
     </div>
   )
 }
 
 const mapStateToProps = ({ chat }) => ({
-  emailAddress: chat.emailAddress
+  socketIsClosed: chat.socketIsClosed,
+  totalMessages: chat.totalMessages
 })
 
 const mapDispatchToProps = dispatch =>
