@@ -10,8 +10,8 @@ const openSocketConnection = userEmailAddress => {
   socket.onopen = () =>
     socket.send(
       JSON.stringify({
-        Authorization: authString,
-        User: userEmailAddress
+        authorization: authString,
+        user: userEmailAddress
       })
     )
 
