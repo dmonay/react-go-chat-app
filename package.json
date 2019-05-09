@@ -1,0 +1,35 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "now-start": "serve -s ./build",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "precommit": "pretty-quick --staged"
+  },
+  "devDependencies": {
+    "prettier": "1.17.0",
+    "react-scripts": "2.1.8"
+  },
+  "dependencies": {
+    "@material-ui/core": "^3.9.3",
+    "connected-react-router": "6.4.0",
+    "history": "4.7.2",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-redux": "6.0.0",
+    "react-router": "5.0.0",
+    "react-router-dom": "5.0.0",
+    "redux": "4.0.1",
+    "redux-thunk": "2.3.0",
+    "sanitize.css": "7.0.3",
+    "serve": "10.1.2"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
