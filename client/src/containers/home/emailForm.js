@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 
 import { addUserEmail } from '../../modules/chat'
+import openSocketConnection from './socket'
 
 const styles = theme => ({
   container: {
@@ -29,6 +30,7 @@ const EmailForm = props => {
   const handleSubmit = event => {
     props.addUserEmail(userEmailAddress)
     props.changePage()
+    openSocketConnection(userEmailAddress)
     event.preventDefault()
   }
 
