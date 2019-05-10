@@ -87,8 +87,6 @@ func HandleSocket(w http.ResponseWriter, r *http.Request) {
 
 		messagesStore.Add(responseFrame)
 
-		// fmt.Printf("store is now: %+v\n", *messagesStore)
-
 		if err = wsjson.Write(ctx, c, responseFrame); err != nil {
 			log.Println(err)
 			return
