@@ -4,16 +4,23 @@ import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
+import Icon from '@material-ui/core/Icon'
 
 const styles = theme => ({
   formContainer: {
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#a4bace'
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     width: 200
+  },
+  rightIcon: {
+    marginLeft: theme.spacing.unit
   }
 })
 
@@ -47,6 +54,7 @@ const Sender = props => {
 
       <Button type="submit" value="Submit" variant="contained" color="primary">
         Send
+        <Icon className={classes.rightIcon}>send</Icon>
       </Button>
     </form>
   )

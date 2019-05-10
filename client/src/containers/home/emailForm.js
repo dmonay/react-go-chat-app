@@ -35,6 +35,12 @@ const EmailForm = props => {
   const { classes } = props
 
   const handleSubmit = event => {
+    event.preventDefault()
+
+    // At most basic, an email is a@b.c
+    if (userEmailAddress.length < 5) {
+      return
+    }
     props.addUserEmail(userEmailAddress)
 
     let actions = {
@@ -47,13 +53,11 @@ const EmailForm = props => {
     openSocketConnection(userEmailAddress, actions)
 
     props.goToChat()
-    event.preventDefault()
   }
 
   return (
     <form className={classes.container} onSubmit={handleSubmit}>
       <TextField
-        id="standard-name"
         type="email"
         className={classes.textField}
         value={userEmailAddress}

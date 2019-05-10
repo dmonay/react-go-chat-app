@@ -1,42 +1,32 @@
 import React from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Home from '../home'
 import Chat from '../chat'
 import ErrorPage from '../error'
 
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 
-const App = () => (
-  <div>
-    <div className={{ flexGrow: 1 }}>
-      <AppBar position="static" color="default">
-        <Toolbar>
-          <Button color="primary">
-            <Link to="/">Home</Link>
-          </Button>
-        </Toolbar>
-      </AppBar>
-    </div>
+const mainStyles = {
+  background: 'radial-gradient(#2C5364, #0F2027)',
+  minHeight: '100vh'
+}
 
-    <main>
-      <Grid
-        container
-        spacing={0}
-        direction="column"
-        alignItems="center"
-        justify="center"
-        style={{ minHeight: '90vh' }}>
-        <Grid item xs={6}>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/chat" component={Chat} />
-          <Route exact path="/error" component={ErrorPage} />
-        </Grid>
+const App = () => (
+  <main>
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justify="center"
+      style={mainStyles}>
+      <Grid item xs={6}>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/chat" component={Chat} />
+        <Route exact path="/error" component={ErrorPage} />
       </Grid>
-    </main>
-  </div>
+    </Grid>
+  </main>
 )
 
 export default App

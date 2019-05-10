@@ -8,7 +8,7 @@ const ErrorPage = () => {
     <div>
       <h1>Looks like we're having trouble connecting to the mothership!</h1>
       <Button color="secondary">
-        <Link to="/">Go Home</Link>
+        <Link to="/">Take me where the grass is green</Link>
       </Button>
     </div>
   )
