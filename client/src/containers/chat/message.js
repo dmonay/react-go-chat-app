@@ -62,7 +62,6 @@ const getMsgBlock = (data, classes) => {
 }
 
 const Message = props => {
-  console.log('my props are: ', props)
   return getMsgBlock(props.data, props.classes)
 }
 

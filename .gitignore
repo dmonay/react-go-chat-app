@@ -24,5 +24,5 @@ sinaiChat
 
 # local cert that could leak dev machine info,
 # hence keep out of version control
-server/tls/cert.pem
-server/tls/key.pem
+cert.pem
+key.pem

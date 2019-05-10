@@ -1,8 +1,6 @@
 import React from 'react'
-import { push } from 'connected-react-router'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-
 import { Link } from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
@@ -11,6 +9,8 @@ import Button from '@material-ui/core/Button'
 import Header from './header'
 import MessageView from './messageView'
 import Sender from './sender'
+
+import { exitChat } from '../../modules/chat'
 
 const styles = {
   chatWrapper: {
@@ -33,7 +33,9 @@ const styles = {
 const ChatBox = props => {
   return (
     <div className={props.classes.chatWrapper}>
-      <Button className={props.classes.homeLink}>
+      <Button
+        className={props.classes.homeLink}
+        onClick={() => props.exitChat(props.socket)}>
         <Link to="/">
           <img
             alt="back button"
@@ -51,11 +53,11 @@ const ChatBox = props => {
 }
 
 const mapStateToProps = ({ chat }) => ({
-  emailAddress: chat.emailAddress
+  socket: chat.socket
 })
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ changePage: () => push('/') }, dispatch)
+  bindActionCreators({ exitChat }, dispatch)
 
 export default connect(
   mapStateToProps,

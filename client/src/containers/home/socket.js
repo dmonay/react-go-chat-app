@@ -44,10 +44,17 @@ const openSocketConnection = (userEmailAddress, actions) => {
   }
 
   // Construct callback when socket closes.
-  socket.onclose = () => {
-    console.log('Socket has closed. Redirecting to error page.')
-    actions.socketIsClosed()
-    actions.goToError()
+  socket.onclose = closeEvent => {
+    const serverTerminatedSocket = !closeEvent.wasClean
+
+    if (serverTerminatedSocket) {
+      console.warn('Server terminated socket. Redirecting to error page.')
+      actions.socketIsClosed()
+      actions.goToError()
+    }
+
+    // If our code initiated the socket termination, that means the user has exited the chat,
+    // we have flushed the state, and user is now on home page.
   }
 }
 

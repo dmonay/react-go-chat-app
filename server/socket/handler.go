@@ -70,9 +70,8 @@ func HandleSocket(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		log.Printf("%s has connected!", sf.User)
-
 		if i == 0 {
+			log.Printf("%s has connected!", sf.User)
 			continue
 		}
 		totalMessages := messagesStore.totalMessages + 1

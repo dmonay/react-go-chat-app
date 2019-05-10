@@ -30,13 +30,18 @@ const Sender = props => {
   const { classes } = props
 
   const handleSend = event => {
+    event.preventDefault()
+
+    // user has not typed in any text
+    if (messageText.length === 0) {
+      return
+    }
     props.socket.send(
       JSON.stringify({
         user: props.emailAddress,
         value: messageText
       })
     )
-    event.preventDefault()
 
     // clear out local state
     saveMessageText('')
